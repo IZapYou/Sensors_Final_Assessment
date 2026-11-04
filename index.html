@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Sample portfolio for 41118 AI in robotics class at UTS.">
-  <meta name="keywords" content="41118">
+        content="41014 Sensors and Control integrated project, Track B: vision-guided pick with a UR3e in MuJoCo.">
+  <meta name="keywords" content="41014, UR3e, MuJoCo, RGB-D, Kalman filter, LQR">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Group 101 Sensors Track B Website</title>
 
@@ -15,8 +15,6 @@
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.png">
 
@@ -34,37 +32,18 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Group 101 Sensors Track B Website</h1>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                William Peirce, Jason Bean, Shujay Vijaygiri, Anthony Zappia
-              </span>
-            </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              William Peirce, Jason Bean, Shujay Vijaygiri, Anthony Zappia
+            </span>
+          </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">University of Technology Sydney,</span>
-
+            <span class="author-block">University of Technology Sydney</span>
+          </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. 
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>-->
               <!-- Video Link. -->
               <span class="link-block">
                 <a href="#video"
@@ -75,27 +54,17 @@
                   <span>Video</span>
                 </a>
               </span>
-              <!-- Code Link. -->
+
               <span class="link-block">
-                <a href="https://github.com/rFalque/41118_project-sample"
+                <a href="https://github.com/IZapYou/Sensors_Final_Assessment/tree/main"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
-                  </a>
+                </a>
               </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/rFalque/41118_project-sample/tree/main/data_sample"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
             </div>
-
           </div>
         </div>
       </div>
@@ -108,10 +77,10 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <img src="./static/images/teaser.png"
-            class="teaser-image"
-            alt="Teaser."/>
+           class="teaser-image"
+           alt="Teaser."/>
       <h2 class="subtitle has-text-centered">
-        41118 Portfolio teaser sample of teaser image for your project. Note that this image is AI generated and does not reflect any flowchart of an actual framework. However, this text would be a great place to give a quick summary of your own flowchart.
+        Put image of sim later.
       </h2>
     </div>
   </div>
@@ -125,33 +94,23 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item">
           <img src="./static/images/staff/Raphael_Falque.jpg"
-            class="teaser-image"
-            alt="Teaser."/>
+               class="teaser-image"
+               alt="Team member 1."/>
         </div>
-        <div class="item item-chair-tp">
+        <div class="item">
           <img src="./static/images/staff/Lan_Wu.jpeg"
-            class="teaser-image"
-            alt="Teaser."/>
+               class="teaser-image"
+               alt="Team member 2."/>
         </div>
-        <div class="item item-fullbody">
+        <div class="item">
           <img src="./static/images/staff/Hugh_Byun.jpeg"
-            class="teaser-image"
-            alt="Teaser."/>
+               class="teaser-image"
+               alt="Team member 3."/>
         </div>
-        <div class="item item-shiba">
+        <div class="item">
           <img src="./static/images/staff/Dominik_Slomma.jpeg"
-            class="teaser-image"
-            alt="Teaser."/>
-        </div>
-        <div class="item item-blueshirt">
-          <img src="./static/images/staff/Augustine_Le.jpeg"
-            class="teaser-image"
-            alt="Teaser."/>
-        </div>
-        <div class="item item-mask">
-          <img src="./static/images/staff/Resul_Dagdanov.jpeg"
-            class="teaser-image"
-            alt="Teaser."/>
+               class="teaser-image"
+               alt="Team member 4."/>
         </div>
       </div>
     </div>
@@ -172,44 +131,29 @@
           <p>
             Second paragraph
           </p>
-          <p>
-            The video below explain how to set up your portfolio.
-          </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
-    <!-- Paper video. -->
+    <!-- Video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 id="video" class="title is-3">Video</h2>
-        <!-- 
-        <p>
-          As a youtube link:
-        </p>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-        -->
-        <p>
-          Directly embedded video:
-        </p>
         <div class="content has-text-centered">
           <video id="replay-video"
-                  controls
-                  preload
-                  playsinline
-                  width="100%">
+                 controls
+                 preload
+                 playsinline
+                 width="100%">
             <source src="./static/videos/portfolio_instructions.mp4"
                     type="video/mp4">
           </video>
         </div>
       </div>
     </div>
-    <!--/ Paper video. -->
-    
+    <!--/ Video. -->
+
   </div>
 </section>
 
@@ -217,78 +161,105 @@
 <section class="section">
   <div class="container is-max-desktop">
 
+    <!-- Modelling. -->
     <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">CNN evaluation</h2>
+      <div class="column is-full-width">
+        <h2 class="title is-3">Modelling</h2>
+        <div class="content has-text-justified">
           <p>
-            Confusion matrix of the CNN evaluation on the test set.
+            Describe the state-space model, its assumptions, and the controllability and observability analysis.
           </p>
-
+          <p>
+            Orem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
           <img src="./static/images/results/confusion_matrix_seaborn.png"
-            class="teaser-image"
-            alt="Teaser."/>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">DQN training</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              Sample of the reward convergence plot of the DQN training.
-            </p>
-            <img src="./static/images/results/reward_convergence_plot.png"
-            class="teaser-image"
-            alt="Teaser."/>
-          </div>
+               class="teaser-image"
+               alt="Modelling figure."/>
         </div>
       </div>
     </div>
-    <!--/ Matting. -->
+    <!--/ Modelling. -->
 
-    <!-- Visual Effects. -->
-    <div class="column">
-      <div class="content">
+    <!-- Sensing. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Sensing</h2>
+        <div class="content has-text-justified">
+          <p>
+            Describe the camera calibration, noise handling and frame management.
+          </p>
+          <p>
+            Orem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <img src="./static/images/results/reward_convergence_plot.png"
+               class="teaser-image"
+               alt="Sensing figure."/>
+        </div>
+      </div>
+    </div>
+    <!--/ Sensing. -->
+
+    <!-- Estimation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
         <h2 class="title is-3">Estimation</h2>
-        <p>
-          Confusion matrix of the CNN evaluation on the test set.
-        </p>
-
-        <img src="./static/images/results/confusion_matrix_seaborn.png"
-          class="teaser-image"
-          alt="Teaser."/>
+        <div class="content has-text-justified">
+          <p>
+            Describe the Kalman filter and observer design, tuning and performance.
+          </p>
+          <p>
+            Orem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <img src="./static/images/results/confusion_matrix_seaborn.png"
+               class="teaser-image"
+               alt="Estimation figure."/>
+        </div>
       </div>
     </div>
-    <!--/ Visual Effects. -->
+    <!--/ Estimation. -->
 
-    <!-- Visual Effects. -->
-    <div class="column">
-      <div class="content">
-        <h2 class="title is-3">CNN evaluation</h2>
-        <p>
-          Confusion matrix of the CNN evaluation on the test set.
-        </p>
-
-        <img src="./static/images/results/confusion_matrix_seaborn.png"
-          class="teaser-image"
-          alt="Teaser."/>
+    <!-- Control. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Control</h2>
+        <div class="content has-text-justified">
+          <p>
+            Describe the controller design, tuning and tracking results.
+          </p>
+          <p>
+            Orem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <img src="./static/images/results/reward_convergence_plot.png"
+               class="teaser-image"
+               alt="Control figure."/>
+        </div>
       </div>
     </div>
-    <!--/ Visual Effects. -->
+    <!--/ Control. -->
 
+    <!-- Integration and Robustness. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Integration and Robustness</h2>
+        <div class="content has-text-justified">
+          <p>
+           Describe performance under disturbance and noise.
+          </p>
+          <p>
+            Orem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <img src="./static/images/results/confusion_matrix_seaborn.png"
+               class="teaser-image"
+               alt="Integration figure."/>
+        </div>
+      </div>
+    </div>
+    <!--/ Integration and Robustness. -->
 
-
-
-    <!-- Concurrent Work. -->
+    <!-- Results discussion. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Results discussion and reflection</h2>
-
         <div class="content has-text-justified">
           <p>
             This is a sample text to show how the results discussion and reflection would look like in your own project. You can use this space to describe the main results obtained, the limitations of your work, and the future work that could be done.
@@ -299,36 +270,41 @@
         </div>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
-
-  </div>
-</section>
+    <!--/ Results discussion. -->
 
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
+    <!-- Individual Contributions. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Individual Contributions</h2>
+        <div class="content">
+          <p>
+            Sample text for each member's contribution.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Individual Contributions. -->
+
+    <!-- Generative AI Declaration. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Generative AI Declaration</h2>
+        <div class="content">
+          <p>
+            Sample text for the generative AI declaration.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Generative AI Declaration. -->
+
   </div>
 </section>
 
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
@@ -338,11 +314,8 @@
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of the  website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            Website template borrowed from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+            website.
           </p>
         </div>
       </div>
