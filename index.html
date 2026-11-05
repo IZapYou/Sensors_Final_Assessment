@@ -188,19 +188,26 @@
           <p>
             Describe the camera calibration, noise handling and frame management.
           </p>
-          <img src="./figures/Sensing_sec/Sensor1.png"
-               class="teaser-image"
-               alt="Sensing figure."/>
-          <img src="./figures/Sensing_sec/Sensor2.png"
-               class="teaser-image"
-               alt="Sensing figure."/>
-          <img src="./figures/Sensing_sec/Sensor3.png"
-               class="teaser-image"
-               alt="Sensing figure."/>
+
+          <div class="columns is-mobile">
+            <div class="column">
+              <img src="./figures/Sensing_sec/Sensor2.png"
+                   style="width: 100%;"
+                   alt="Calibration image with detected corners."/>
+            </div>
+            <div class="column">
+              <img src="./figures/Sensing_sec/Sensor3.png"
+                   style="width: 100%;"
+                   alt="Calibration image with detected corners."/>
+            </div>
+          </div>
           <p>
             The perception pipeline converts each red-pixel measurement (u, v, d) into a 3D point using the camera intrinsic matrix K, so the accuracy of K directly affects the estimated position of the cube. The board placed in the MuJoCo scene has 9x7 squares, having 8x6 inner corners of 15mm squares. The arm was moved to random poses near its home configuration, and the first 15 images in which the full board was visible were kept.
             Corners were detected with OpenCV’s findChessboardCorners, refined to sub-pixel accuracy with cornerSubPix, which was used to estimate K withcalibrateCamera, adapted from the calibration tutorial. Finally, lens distortion was fixed at zero, as MuJoCo renders an ideal pinhole camera, fitting distortion parameters would only absorb noise and bias the focal length.
           </p>
+          <img src="./figures/Sensing_sec/Sensor1.png"
+               class="teaser-image"
+               alt="Sensing figure."/>
           <p>
             https://docs.opencv.org/3.4.20/dc/dbb/tutorial_py_calibration.html 
           </p>
