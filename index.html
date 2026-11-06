@@ -178,35 +178,52 @@
                    alt="Pinhole Model Formula."/>
             </div>
             <div class="column">
-              <img src="./figures/Modelling_Sec/Pinhole_Model.png"
+              <img src="./figures/Modelling_Sec/Pinhole_Formula.png"
                    style="width: 100%;"
                    alt="Pinhole Model from VSC."/>
             </div>
           </div>
-          
           <p>
             A camera to world transformation was then applied to convert the target position into the robot for frame management, accounting for a 30mm surface to centre offset 
             for the estimated position to represent the centre of the object over its visible surface. The pose is then passed through the Kalman filter to account for uncertainties 
             in assumed depth and distances for a more accurate state space modelling to be achieved. Within the Mujoco simulation, the perception pipeline successfully detected 
             the red block through the RGB-D, and generated 3D pose estimates for the UR3E arm in correlation with the wrist camera. The initial estimate was approximately 
-            [.0603 -0.2096 0.0299] meters. With the pixel centroid being detected from [522, 327], to [148, 356], and then [245, 48] as the cameras position changed with arm movement. 
+            [0.0603 -0.2096 0.0299] meters. With the pixel centroid being detected from [522, 327], to [148, 356], and then [245, 48] as the cameras position changed with arm movement. 
             Despite changes to the images as the robot arm and camera moved, estimated world coordinated remained consistent, with a minor variation of 6, 11, and 21mm to the respective
             x, y, and z in all measurements. While the implementation of RGB-D and state space modelling was successful, further accuracy in target position cannot purely be achieved 
             by reducing tracking errors and filtering uncertainty. More accurate results in modelling require the addition of comparing RGB-D estimate valise against ground-truth 
             target positions, conducting more trial runs, and potentially exploring machine learning
           </p>
 
-          <div class="columns is-centered">
-            <img src="./figures/Modelling_Sec/Pinhole_Model.png"
-                 class="teaser-image"
-                 alt="Mujoco Image."/>
+                    <div class="columns is-mobile">
+            <div class="column">
+              <img src="./figures/Modelling_Sec/wrist_depth.png"
+                   style="width: 100%;"
+                   alt="Pinhole Model Formula."/>
+            </div>
+            <div class="column">
+              <img src="./figures/Modelling_Sec/wrist_rgb.png"
+                   style="width: 100%;"
+                   alt="Pinhole Model from VSC."/>
+            </div>
           </div>
-          
+
+          <p>
+                      <div class="columns is-mobile">
+            <div class="column">
+              <img src="./figures/Modelling_Sec/RGB-D_Results.png"
+                   style="width: 100%;"
+                   alt="Pinhole Model Formula."/>
+            </div>
+            <div class="column">
+              <img src="./figures/Modelling_Sec/Accuracy_Data.png"
+                   style="width: 100%;"
+                   alt="Pinhole Model from VSC."/>
+            </div>
+          </div>
+            
           </p>
-          <img src="./static/images/results/confusion_matrix_seaborn.png"
-               class="teaser-image"
-               alt="Modelling figure."/>
-        </div>
+          
       </div>
     </div>
     <!--/ Modelling. -->
