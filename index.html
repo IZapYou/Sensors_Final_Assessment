@@ -230,8 +230,16 @@
             The ground-truth intrinsics, derived from the simulated camera (fovy=42degrees), using f = (H/2)/tan, gives the results (fovy/2) = 625.2px, as shown in the fallback block of code above. The calibrated focal lengths have an error of 0.05px (fx) and 1.32px (fy) of the ground truth, and the principal is within 1.1px (cx) and 0.4px (cy). The larger error in fy may be due to less vertical tilt variety between the 15 point views, as all images were taken with the camera pointing down. To reduce this bias in fy the tilt diversity could increased by capturing new calibration images in which the pitch axis is rotated further. 
             Finally, varying the distance between the camera and the board across more than the 15 views would give the algorithm better geometric leverage, as it will produce less biased focal lengths.
           </p>
+          <p>
+            For noise handling, MuJoCo renders perfect images, so the simulated camera has no noise. Since a real RGB-D camera is never completely noise free, we add random noise to each detection in camera_noise.py before it reaches the estimator. The detected centre pixel (u, v) gets zero mean Gaussian noise of 0.5 px (1σ), which stands in for small frame to frame changes in which pixels the segmentation picks up. The depth gets Gaussian noise of σ = 1 mm + 0.01·d², where d is the distance to the block. The depth error grows with distance squared because that is how stereo depth cameras behave. The values are based on the Intel RealSense D435, which is specified at under 2% depth error at 2 m (the model gives 41 mm, or 2%, at 2 m). The noisy pixel and depth are then back-projected through K the same way as a clean reading. 
+            At the 206 mm look pose this gives about 1.4 mm of depth noise but only 0.16 mm sideways, so most of the noise lies along the camera’s line of sight. The estimator is not given these values.
+          </p>
+          <img src="./figures/Sensing_sec/Sensor7.png"
+               class="teaser-image"
+               alt="Sensing figure."/>
+          <p>
 
-          
+         
         </div>
       </div>
     </div>
