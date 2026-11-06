@@ -250,14 +250,39 @@
         <h2 class="title is-3">Estimation</h2>
         <div class="content has-text-justified">
           <p>
-            Describe the Kalman filter and observer design, tuning and performance.
+            The target Kalman filter fuses noisy camera readings into a block position for the controller, and a joint state observer estimates joint velocities for the LQR. Over 40 random block positions, the filter cut the average error from 1.84 mm for a single reading to 1.29 mm, close to the 1.22 mm limit set by the camera's systematic offset. 
           </p>
-          <p>
-            Second Paragraph          
-          </p>
-          <img src="./static/images/results/confusion_matrix_seaborn.png"
+          <img src="./figures/Estimation_sec/Estimation1.png"
                class="teaser-image"
                alt="Estimation figure."/>
+          <p>
+            The block is still until it is grasped, so the filter uses a constant-position model: the state is the block's world position, measured directly by each camera reading (A = C = I₃). It predicts and updates, with a reading every 0.2 s and process noise Q_d = q²·dt·I
+          </p>
+          <p>
+            The measurement noise R_n is built in the camera frame from each reading's depth d, then rotated into the world frame with the camera rotation R, so the filter knows depth is the noisy direction:
+          </p>
+          <img src="./figures/Estimation_sec/Estimation2.png"
+               class="teaser-image"
+               alt="Estimation figure."/>
+          <p>
+            For the tuning of the Kalman filter, we used NEES (normalised estimation error squared), which checks if the filter is overconfident or underconfident. Using it we found that the filter was badly overconfident without an allowance for the camera's systematic offset (average NEES of 71, against an ideal of 3). Adding a 1.3 mm error floor (σ_f) and setting q = 1 mm/s brought the average NEES down to 4.3, with 92% of samples inside the 95% bound. Readings with a normalised innovation squared (NIS) above 11.34 are rejected as outliers.
+          </p>
+          <p>
+            In a full run, the estimate settled within a few readings with an error within 2mm in every axis at the grasp. It should be noted that once the arm began to lower itself the object slowly began to cut off, the gate rejecting them as they were too far off while the filter predicted on its own.
+          </p>
+          <img src="./figures/Estimation_sec/Estimation3.png"
+               class="teaser-image"
+               alt="Estimation figure."/>
+          <h3 class="title is-4">Joint state observer</h3>
+          <p>
+            The LQR needs joint velocities, but only angles are measured. JointStateObserver runs a two-state Kalman filter for each joint every 2 ms step, with the same constant velocity model as the LQR.
+          </p>
+          <img src="./figures/Estimation_sec/Estimation4.png"
+               class="teaser-image"
+               alt="Estimation figure."/>
+          <p>
+            It is tuned with 1 mrad angle noise and per step process noise variances of 10⁻⁸ rad² and 10⁻⁴ (rad/s)². The larger velocity term lets the estimate follow the arm as it accelerates while still smoothing the angles. 
+          </p>
         </div>
       </div>
     </div>
