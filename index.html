@@ -263,9 +263,18 @@
         <div class="content has-text-justified">
           <p>
             Describe the controller design, tuning and tracking results.
+
+            The control system for the UR3e arm combines an inverse kinematics solver with a discrete time Linear Quadratic Regulator that tracks the resulting joint targets.
+            Given a desired end-effector pose, the IK stage computes a set of 6 joint angles for the arms, and the LQR stage drives each joint smoothly towards the set angles.
           </p>
           <p>
-            Second Paragraph          
+            The IK solver uses damped least squares on the arms Jacobian, calculated with MuJoCo. At each iteration it applies the arms joint angles to the model, measures position error between the end effector and target, and calculates a joint update.
+            To keep the end effector aimed downward, a weighted orientation error is also included in the postion error. Its weighted by 0.3, so overall position accuracy still takes priority.
+            Damping keeps the solution operating near singularities, where each step is clipped to the maximum size, and the results are clamped to the joint limits. 
+            The solver stops once the position error falls below 3mm.
+          </p>
+          <p>
+            The LQR controller models each joint as a double integrator, with state
           </p>
           <img src="./static/images/results/reward_convergence_plot.png"
                class="teaser-image"
