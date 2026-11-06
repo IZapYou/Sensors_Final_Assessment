@@ -20,3 +20,5 @@ cd Sensors-and-Controls-Final-Project--Code/Sensors_Start
 python main_pick.py
 ```
 Note: To disable the added noise, go into config.py and edit CAMERA_NOISE = False
+
+For original repo with code commits: https://github.com/SkyyWP/Sensors-and-Controls-Final-Project-/tree/main
