@@ -1,13 +1,8 @@
-# 41118_project-sample
+# Sensors Final Assignment: Group 101 Sensors Track B
 
 ## Resources
-- To edit your README file, follow these [markdown instructions](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-- This video explains how to set up a GitHub page that you can use as a portfolio. The page is an edited version of the [nerfies](https://github.com/nerfies/nerfies.github.io) website.
-- Alternatively, you can use a Jekyll theme for your project page ([see documentation here](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll)).
+The goal of this project was to create a simulation of a UR3 robotic arm, that with the use of sensors could detect an object on a table top, plan an approach, and execute using IBVS. Main ideas, methods used, results overview.
 
-Below, I give an example of the minimal information required in your README file:
-
-Short explanation of your project
 
 ## Group information
 Group number
