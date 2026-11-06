@@ -5,10 +5,7 @@ The goal of this project was to create a simulation of a UR3 robotic arm, that w
 
 ## Group information
 Group 101:
-William Peirce
-Jason Bean
-Shujay Vijaygiri
-Anthony Zappia
+William Peirce, Jason Bean, Shujay Vijaygiri, Anthony Zappia
 
 ## Install info
 Define here the dependencies for your project
