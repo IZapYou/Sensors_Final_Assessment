@@ -252,7 +252,7 @@
           <p>
             The target Kalman filter fuses noisy camera readings into a block position for the controller, and a joint state observer estimates joint velocities for the LQR. Over 40 random block positions, the filter cut the average error from 1.84 mm for a single reading to 1.29 mm, close to the 1.22 mm limit set by the camera's systematic offset. 
           </p>
-          <img src="./figures/Estimation_sec/Estimation1.png"
+          <img src="./figures/Est_sec/Est1.png"
                class="teaser-image"
                alt="Estimation figure."/>
           <p>
@@ -261,7 +261,7 @@
           <p>
             The measurement noise R_n is built in the camera frame from each reading's depth d, then rotated into the world frame with the camera rotation R, so the filter knows depth is the noisy direction:
           </p>
-          <img src="./figures/Estimation_sec/Estimation2.png"
+          <img src="./figures/Est_sec/Est2.png"
                class="teaser-image"
                alt="Estimation figure."/>
           <p>
@@ -270,14 +270,14 @@
           <p>
             In a full run, the estimate settled within a few readings with an error within 2mm in every axis at the grasp. It should be noted that once the arm began to lower itself the object slowly began to cut off, the gate rejecting them as they were too far off while the filter predicted on its own.
           </p>
-          <img src="./figures/Estimation_sec/Estimation3.png"
+          <img src="./figures/Est_sec/Est3.png"
                class="teaser-image"
                alt="Estimation figure."/>
           <h3 class="title is-4">Joint state observer</h3>
           <p>
             The LQR needs joint velocities, but only angles are measured. JointStateObserver runs a two-state Kalman filter for each joint every 2 ms step, with the same constant velocity model as the LQR.
           </p>
-          <img src="./figures/Estimation_sec/Estimation4.png"
+          <img src="./figures/Est_sec/Est4.png"
                class="teaser-image"
                alt="Estimation figure."/>
           <p>
