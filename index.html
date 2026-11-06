@@ -170,16 +170,20 @@
             RGB and depth images are initially loaded, and the red block is then distinguished by a specific colour threshold to determine the pixel centroid at (u, v). 
             From this, the pixel coordinates and corresponding depth ranges can be converted into camera frame coordinates through the pinhole camera model. 
           </p>
-            <div class="has-text-centered" style="margin: 1.5rem 0;">
-              \[ \left(X_{c},Y_{c},Z_{c}\right)=\left(\frac{(u-c_{x})d}{f_{x}},\ \frac{(v-c_{y})d}{f_{y}},\ d\right) \]
-            </div>  
-          </p>
           
-          <div class="columns is-centered">
-            <img src="./figures/Modelling_sec/Pinhole_Model.png"
-                 class="teaser-image"
-                 alt="Modelling figure."/>
+          <div class="columns is-mobile">
+            <div class="column">
+              <img src="./figures/Modelling_Sec/Pinhole_Model.png"
+                   style="width: 100%;"
+                   alt="Pinhole Model Formula."/>
+            </div>
+            <div class="column">
+              <img src="./figures/Modelling_Sec/Pinhole_Model.png"
+                   style="width: 100%;"
+                   alt="Pinhole Model from VSC."/>
+            </div>
           </div>
+          
           <p>
             A camera to world transformation was then applied to convert the target position into the robot for frame management, accounting for a 30mm surface to centre offset 
             for the estimated position to represent the centre of the object over its visible surface. The pose is then passed through the Kalman filter to account for uncertainties 
@@ -191,6 +195,13 @@
             by reducing tracking errors and filtering uncertainty. More accurate results in modelling require the addition of comparing RGB-D estimate valise against ground-truth 
             target positions, conducting more trial runs, and potentially exploring machine learning
           </p>
+
+          <div class="columns is-centered">
+            <img src="./figures/Modelling_Sec/Pinhole_Model.png"
+                 class="teaser-image"
+                 alt="Mujoco Image."/>
+          </div>
+          
           </p>
           <img src="./static/images/results/confusion_matrix_seaborn.png"
                class="teaser-image"
