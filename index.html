@@ -321,19 +321,83 @@
     <!--/ Control. -->
 
     <!-- Integration and Robustness. -->
+    <style>
+      .trial-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 1.5rem; }
+      .trial { flex: 0 0 calc(33.333% - 12px); text-align: center; }
+      .trial img { width: 100%; height: 200px; object-fit: contain; display: block; }
+      .trial-label { font-weight: 600; margin-bottom: 0.25rem !important; }
+      .img-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; margin-bottom: 1.5rem; }
+      .img-row img { width: auto; max-width: 100%; }
+      @media (max-width: 600px) { .trial { flex-basis: calc(50% - 12px); } .trial img { height: 140px; } }
+    </style>
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Integration and Robustness</h2>
         <div class="content has-text-justified">
+
+          <div class="img-row">
+            <img src="./figures/robust_Sec/Robust1.png" style="height: 120px;" alt="Trial coordinates, grasp result and final estimate."/>
+            <img src="./figures/robust_Sec/Robust2.png" style="height: 120px;" alt="Trial estimate error and uncertainty."/>
+          </div>
+
+          <div class="trial-grid">
+            <div class="trial">
+              <p class="trial-label">1</p>
+              <img src="./figures/robust_Sec/Robust3.png" style="" alt="Camera view for trial 1."/>
+            </div>
+            <div class="trial">
+              <p class="trial-label">2</p>
+              <img src="./figures/robust_Sec/Robust4.png" style="" alt="Camera view for trial 2."/>
+            </div>
+            <div class="trial">
+              <p class="trial-label">3</p>
+              <img src="./figures/robust_Sec/Robust5.png" style="" alt="Camera view for trial 3."/>
+            </div>
+            <div class="trial">
+              <p class="trial-label">4</p>
+              <img src="./figures/robust_Sec/Robust6.png" style="" alt="Camera view for trial 4."/>
+            </div>
+            <div class="trial">
+              <p class="trial-label">5.</p>
+              <img src="./figures/robust_Sec/Robust7.png" style="" alt="Camera view for trial 5."/>
+            </div>
+          </div>
+
           <p>
-           Describe performance under disturbance and noise.
+            The test method involved running the MuJoCo simulation with the cube at five different positions across the table, set in scene_pick.xml. Camera noise was enabled, and the ground truth was taken from the scene definition, with z = 0.030m (half of the cubes initial height of 6cm). The ground truth was only used to score the results afterwards, never by the robot. The success of a trial was counted if the cube was lifted and centred underneath the end effector judged visually in the viewer and by the position error.
           </p>
           <p>
-            Second Paragraph
+            The table above indicates that the cube was properly grasped in only 4 out of the 5 trials, with trial 5 being knocked. The lowest error occurred when the cube was centred in the camera’s view, while the largest error occurred when the cube was only partly in view, as seen in trail 3. The error in trial 2 is shown as &lt;1mm because the printed estimate is rounded to the nearest 1mm.
           </p>
-          <img src="./static/images/results/confusion_matrix_seaborn.png"
-               class="teaser-image"
-               alt="Integration figure."/>
+          <p>
+            For estimation accuracy, trials 1, 2 and 5 had errors of 5mm or less, as they had a full view of the cube (approximately 13 000 red pixels). Trial 4 was placed on the checkerboard, showing that the black and whites squares did not affect the RGB-D red colour detection. Trial 3 had a 17mm error because the cube was at the top edge of the image and only partly visible (4 945 red pixels), so the centroid of the visible red pixels was biased towards the robot. The accuracy of the estimate directly depends on how much of the cube is visible, as a fuller view provides more red pixels for the RGB-D camera. 
+          </p>
+          <p>
+            In terms of uncertainty consistency, trial 3 had an error of 17mm against an uncertainty of 0.7mm whilst trial 1 had 5mm against 0.8mm. For a well-tuned filter, the true error usually stays within about 2 two standard deviations. However, the Kalman filter is modelling random noises within the scene, as partial views of the cubes cause a systematic bias, which the averaging in the filter can’t remove.
+          </p>
+          <img src="./figures/robust_Sec/Robust8.png" style="width: 40%; display: block; margin: 0 auto 1.5rem;" alt="Trial 5, cube knocked over during the descent."/>
+          <p>
+            Trial 5 achieved an accurate estimate of 2.2mm error however, during the descent the cartesian errors increased and jumped dramatically by around 100mm, showing how the arm swung away from the cube, before returning to the cube. The inverse kinematic functions only solves for a goal joint configuration and does not control the actual path take, Because the camera cannot see the cube within this timeframe of the descent, the pipeline still reported a successful grasp at the estimated position. 
+          </p>
+          <p>
+            Improvements could include using resolved motion rate control (RMRC) to move the end effector in a straight line during the descent, avoiding errors like those in trial 5, where the cube was knocked over. Furthermore, comparing the RGB-D perception with a second method, such as IBVS, could also reduce bias and errors. Finally, since the camera calibration had a small bias in the fy focal length, using more calibration views with greater tilt variation would improve the camera model, although this effect is small compared to the other errors.
+          </p>
+
+          <div class="img-row">
+            <img src="./figures/robust_Sec/Robust9.png" style="height: 280px;" alt="Pick with the camera noise at its original value."/>
+            <img src="./figures/robust_Sec/Robust10.png" style="height: 280px;" alt="Pick with 100x the camera noise."/>
+          </div>
+          <p>
+            Above is the noise at its original value compared to if the system had 100x the noise. Clearly the noise affects the kalmans filter ability to correct it but this is an extreme scenario for visual sake. To test our systems robustness to the camera noise, we scaled the noise from 0.5x to 10x while the kalman filter remained the same to see the effects on the filters error.
+          </p>
+          <img src="./figures/robust_Sec/Robust11.png" style="width: 100%; display: block; margin: 0 auto 1.5rem;" alt="Average results over 10 picks at each camera noise scale."/>
+          <p>
+            Doing 10 runs for each noise value, we get the table above. This shows that the filter can generally handle up to 3x the designed noise, though past that point the error at grasp increases greatly, going from 2.1mm at 3x to 5.17mm at 5x, then 11.87mm at 10x. This is because the filter starts from its first reading and assumes it to be a much smaller error, and so it trusts it too much and skews the rest of the readings, rejecting readings outside the gate threshold even if they are closer. This results in the grasp being closer to the initial error than it being filtered out.
+          </p>
+          <p>
+            This could be fixed by taking an average of the first few readings and basing the NIS gate off that rather than solely the first reading.
+          </p>
+
         </div>
       </div>
     </div>
