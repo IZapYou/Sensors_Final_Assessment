@@ -274,7 +274,11 @@
             The solver stops once the position error falls below 3mm.
           </p>
           <p>
-            The LQR controller models each joint as a double integrator, with state
+            The LQR controller models each joint as a double integrator, with state (position and velocity) and acceleration as the control input. The gain matrix (K) is computed once at startup by solving the Riccard equation, 
+            using cost weights that penalises position error and control error more heavily than velocity error. At each control step, the controller calculates acceleration from the position and velocity error relative to the goal.
+            It then integrates this acceleration forward one time step to produce the next joint position and velocity.
+            The output is a reference position that is sent to the UR3es position actuators which handle the low level tracking.
+            The controller maintains its own internal command state rather than resetting to the measured state each step to ensure that gravity doesnt pull the commanded trajectory off target.
           </p>
           <img src="./static/images/results/reward_convergence_plot.png"
                class="teaser-image"
@@ -335,7 +339,7 @@
             <b>Jason Bean:</b> Text Here
           </p>
           <p>
-            <b>Anthony Zappia:</b> Text Here
+            <b>Anthony Zappia:</b> My task was to impliment the LQR into the system. I provided the basic code to Will, where he then fully integrated it into the final project code. As well as this, I helped with the overall website, ensuring proper formatting, correct photos, and overall positioning and structure.
           </p>
         </div>
       </div>
