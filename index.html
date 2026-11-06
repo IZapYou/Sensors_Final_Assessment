@@ -160,73 +160,90 @@
 <section class="section">
   <div class="container is-max-desktop">
 
-    <!-- Modelling. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Modelling</h2>
-        <div class="content has-text-justified">
-          <p>
-            The RGB-D perception code processes the wrist mounted camera’s image data to determine the targeted 3D position for the UR3E arm. 
-            RGB and depth images are initially loaded, and the red block is then distinguished by a specific colour threshold to determine the pixel centroid at (u, v). 
-            From this, the pixel coordinates and corresponding depth ranges can be converted into camera frame coordinates through the pinhole camera model. 
-          </p>
-          
-          <div class="columns is-mobile">
-            <div class="column">
-              <img src="./figures/Modelling_Sec/Pinhole_Model.png"
-                   style="width: 100%;"
-                   alt="Pinhole Model Formula."/>
-            </div>
-            <div class="column">
-              <img src="./figures/Modelling_Sec/Pinhole_Formula.png"
-                   style="width: 100%;"
-                   alt="Pinhole Model from VSC."/>
-            </div>
-          </div>
-          <p>
-            A camera to world transformation was then applied to convert the target position into the robot for frame management, accounting for a 30mm surface to centre offset 
-            for the estimated position to represent the centre of the object over its visible surface. The pose is then passed through the Kalman filter to account for uncertainties 
-            in assumed depth and distances for a more accurate state space modelling to be achieved. Within the Mujoco simulation, the perception pipeline successfully detected 
-            the red block through the RGB-D, and generated 3D pose estimates for the UR3E arm in correlation with the wrist camera. The initial estimate was approximately 
-            [0.0603 -0.2096 0.0299] meters. With the pixel centroid being detected from [522, 327], to [148, 356], and then [245, 48] as the cameras position changed with arm movement. 
-            Despite changes to the images as the robot arm and camera moved, estimated world coordinated remained consistent, with a minor variation of 6, 11, and 21mm to the respective
-            x, y, and z in all measurements. While the implementation of RGB-D and state space modelling was successful, further accuracy in target position cannot purely be achieved 
-            by reducing tracking errors and filtering uncertainty. More accurate results in modelling require the addition of comparing RGB-D estimate valise against ground-truth 
-            target positions, conducting more trial runs, and potentially exploring machine learning
-          </p>
 
-                    <div class="columns is-mobile">
-            <div class="column">
-              <img src="./figures/Modelling_Sec/wrist_depth.png"
-                   style="width: 100%;"
-                   alt="Pinhole Model Formula."/>
-            </div>
-            <div class="column">
-              <img src="./figures/Modelling_Sec/wrist_rgb.png"
-                   style="width: 100%;"
-                   alt="Pinhole Model from VSC."/>
-            </div>
-          </div>
+<!-- Modelling -->
+<div class="columns is-centered">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Modelling</h2>
 
-          <p>
-                      <div class="columns is-mobile">
-            <div class="column">
-              <img src="./figures/Modelling_Sec/RGB-D_Results.png"
-                   style="width: 100%;"
-                   alt="Pinhole Model Formula."/>
-            </div>
-            <div class="column">
-              <img src="./figures/Modelling_Sec/Accuracy_Data.png"
-                   style="width: 100%;"
-                   alt="Pinhole Model from VSC."/>
-            </div>
-          </div>
-            
-          </p>
-          
+    <div class="content has-text-justified">
+
+      <p>
+        The RGB-D perception code processes the wrist-mounted camera's image data to determine the targeted 3D position for the UR3E arm. RGB and depth images are initially loaded, and the red block is then distinguished by a specific colour threshold to determine the pixel centroid at (u, v). From this, the pixel coordinates and corresponding depth ranges can be converted into camera frame coordinates through the pinhole camera model.
+      </p>
+
+      <!-- Pinhole Camera Model -->
+      <div class="columns is-mobile">
+        <div class="column">
+          <img
+            src="./figures/Modelling_Sec/Pinhole_Model.png"
+            style="width: 100%;"
+            alt="Pinhole Camera Model Formula."
+          />
+        </div>
+
+        <div class="column">
+          <img
+            src="./figures/Modelling_Sec/Pinhole_Formula.png"
+            style="width: 100%;"
+            alt="Pinhole Camera Model from VS Code."
+          />
+        </div>
       </div>
+
+      <p>
+        A camera-to-world transformation was then applied to convert the target position into the robot's reference frame, accounting for a 30 mm surface-to-centre offset so that the estimated position represents the centre of the object rather than its visible surface. The pose is then passed through the Kalman filter to account for uncertainties in assumed depth and distances, allowing more accurate state-space modelling to be achieved.
+      </p>
+
+      <p>
+        Within the MuJoCo simulation, the perception pipeline successfully detected the red block through the RGB-D camera and generated 3D pose estimates for the UR3E arm in correlation with the wrist camera. The initial estimate was approximately [0.0603, -0.2096, 0.0299] metres. The pixel centroid was detected at [522, 327], [148, 356], and then [245, 48] as the camera's position changed with arm movement.
+      </p>
+
+      <p>
+        Despite changes to the images as the robot arm and camera moved, the estimated world coordinates remained consistent, with minor variations of 6, 11, and 21 mm in the respective x, y, and z measurements. While the implementation of RGB-D and state-space modelling was successful, further accuracy in target positioning cannot be achieved purely by reducing tracking errors and filtering uncertainty. More accurate modelling requires comparing RGB-D estimates against ground-truth target positions, conducting additional trial runs, and potentially exploring machine learning.
+      </p>
+
+      <!-- Wrist Camera RGB-D Output -->
+      <div class="columns is-mobile">
+        <div class="column">
+          <img
+            src="./figures/Modelling_Sec/wrist_depth.png"
+            style="width: 100%;"
+            alt="Wrist Camera Depth Image."
+          />
+        </div>
+
+        <div class="column">
+          <img
+            src="./figures/Modelling_Sec/wrist_rgb.png"
+            style="width: 100%;"
+            alt="Wrist Camera RGB Image."
+          />
+        </div>
+      </div>
+
+      <!-- RGB-D Results and Accuracy -->
+      <div class="columns is-mobile">
+        <div class="column">
+          <img
+            src="./figures/Modelling_Sec/RGB-D_Results.png"
+            style="width: 100%;"
+            alt="RGB-D Perception Results."
+          />
+        </div>
+
+        <div class="column">
+          <img
+            src="./figures/Modelling_Sec/Accuracy_Data.png"
+            style="width: 100%;"
+            alt="RGB-D Position Accuracy Data."
+          />
+        </div>
+      </div>
+
     </div>
-    <!--/ Modelling. -->
+  </div>
+</div>
 
     <!-- Sensing. -->
     <div class="columns is-centered">
