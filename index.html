@@ -169,14 +169,16 @@
             The RGB-D perception code processes the wrist mounted camera’s image data to determine the targeted 3D position for the UR3E arm. 
             RGB and depth images are initially loaded, and the red block is then distinguished by a specific colour threshold to determine the pixel centroid at (u, v). 
             From this, the pixel coordinates and corresponding depth ranges can be converted into camera frame coordinates through the pinhole camera model. 
-          <p>
-            \[X_c=\frac{(u-c_x)d}{f_x},\quadY_c=\frac{(v-c_y)d}{f_y},\quadZ_c=d\]
-          <p>  
           </p>
+            <div class="has-text-centered" style="margin: 1.5rem 0;">
+              \[ \left(X_{c},Y_{c},Z_{c}\right)=\left(\frac{(u-c_{x})d}{f_{x}},\ \frac{(v-c_{y})d}{f_{y}},\ d\right) \]
+            </div>  
+          </p>
+          
           <div class="columns is-centered">
-            <img src="./figures/Sensing_sec/Sensor1.png"
+            <img src="./figures/Modelling_sec/Pinhole_Model.png"
                  class="teaser-image"
-                 alt="Sensing figure."/>
+                 alt="Modelling figure."/>
           </div>
           <p>
             A camera to world transformation was then applied to convert the target position into the robot for frame management, accounting for a 30mm surface to centre offset 
